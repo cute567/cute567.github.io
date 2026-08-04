@@ -1,10 +1,29 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { CardPageConfig } from '@/types/page';
 
 const markdownComponents = {
+    img: ({ src, alt }: React.ComponentProps<'img'>) => {
+        if (!src || typeof src !== 'string') return null;
+        return (
+            <span className="block my-4">
+                <Image
+                    src={src}
+                    alt={alt || ''}
+                    width={960}
+                    height={540}
+                    className="w-full h-auto rounded-lg border border-neutral-200 dark:border-neutral-800"
+                />
+            </span>
+        );
+    },
+    mark: ({ children }: React.ComponentProps<'mark'>) => (
+        <mark className="bg-transparent text-amber-600 dark:text-amber-400 font-semibold">{children}</mark>
+    ),
     p: ({ children }: React.ComponentProps<'p'>) => <p className="mb-3 last:mb-0">{children}</p>,
     ul: ({ children }: React.ComponentProps<'ul'>) => <ul className="list-disc list-inside mb-3 space-y-1">{children}</ul>,
     ol: ({ children }: React.ComponentProps<'ol'>) => <ol className="list-decimal list-inside mb-3 space-y-1">{children}</ol>,
@@ -40,7 +59,7 @@ export default function CardPage({ config, embedded = false }: { config: CardPag
                 <h1 className={`${embedded ? "text-2xl" : "text-4xl"} font-serif font-bold text-primary mb-4`}>{config.title}</h1>
                 {config.description && (
                     <div className={`${embedded ? "text-base" : "text-lg"} text-neutral-600 dark:text-neutral-500 max-w-2xl leading-relaxed`}>
-                        <ReactMarkdown components={markdownComponents}>
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]} components={markdownComponents}>
                             {config.description}
                         </ReactMarkdown>
                     </div>
@@ -69,7 +88,7 @@ export default function CardPage({ config, embedded = false }: { config: CardPag
                         )}
                         {item.content && (
                             <div className={`${embedded ? "text-sm" : "text-base"} text-neutral-600 dark:text-neutral-500 leading-relaxed`}>
-                                <ReactMarkdown components={markdownComponents}>
+                                <ReactMarkdown rehypePlugins={[rehypeRaw]} components={markdownComponents}>
                                     {item.content}
                                 </ReactMarkdown>
                             </div>

@@ -1,5 +1,7 @@
-I am a PhD student at the School of Science, University of Example, advised by [Prof. Advisor One](https://example.com) and [Dr. Advisor Two](https://example.com).
+I am an MSc student in **Electrical and Computer Engineering (ECE)** at [The University of Hong Kong (HKU)](https://www.hku.hk), with research interests spanning **FPGA/ASIC design**, **AI hardware acceleration**, and **neuromorphic computing**.
 
-Prior to this, I obtained a BSc degree with First Class Honours in Natural Science from the University of Example.
+Previously, I earned my BEng in Communication Engineering from [Beijing Jiaotong University (BJTU)](https://www.bjtu.edu.cn).
 
-My current research focuses on investigating the mathematical principles of natural philosophy.
+My hands-on experience includes optimizing FP64 FPU datapaths at Bitmain, designing high-speed radar data acquisition systems on Zynq UltraScale+ FPGAs, building custom FFT/IFFT engines, developing RTL for AI accelerator TensorCore data conversion modules, and deploying spiking neural network prototypes on FPGA.
+
+**Contact:** +86 17584950037 · [estella_fae_huang@163.com](mailto:estella_fae_huang@163.com)

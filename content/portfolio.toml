@@ -1,0 +1,71 @@
+type = "card"
+title = "Portfolio"
+description = "Internship and industry experience in FPGA/ASIC design, AI hardware acceleration, and digital IC verification."
+
+[[items]]
+title = "Digital Design & Verification Engineer"
+subtitle = "Bitmain · Shanghai"
+date = "Jun 2026 – Present"
+tags = ["FP64 FPU", "Goldschmidt", "Newton-Raphson", "VCS/Verdi", "Design Compiler"]
+content = """
+**[Background]**
+
+● Optimized the <mark>FP64 division and square-root execution unit</mark> for a custom <mark>RandomX accelerator</mark> chip to reduce pipeline stalls and throughput loss.
+
+**[Function]**
+
+● Redesigned the FP64 DIV/SQRT datapath using <mark>Goldschmidt division</mark> and <mark>Newton-Raphson reciprocal square root</mark>, unifying both operations into a shared <mark>C0+5 fixed-latency pipeline</mark> with <mark>II=1</mark>.
+● Implemented a <mark>57-bit Q2.55 fixed-point datapath</mark>, three high-precision LUTs, candidate multiply-back verification, and four IEEE rounding modes for bit-exact FP64 results.
+● Built automated flows for LUT generation, candidate-window scanning, <mark>VCS regression</mark>, <mark>Design Compiler synthesis</mark>, and SDC/STA analysis.
+
+**[Realization]**
+
+● Developed 9 RTL modules including the core, interface wrapper, multipliers, CSA, and LUT blocks; verified with 28 directed tests and 10,052 bit-exact vectors.
+● Reduced <mark>SQRT latency from 13 to 5 cycles</mark> and <mark>DIV latency from 9 to 5 cycles</mark>; achieved zero setup violations at <mark>2.4 GHz</mark> under a 5 nm, 0.75 V, 85°C corner with only 8.1% power increase.
+"""
+
+[[items]]
+title = "FPGA/ASIC & Circuit Design Engineer"
+subtitle = "Techhill Technology · Hong Kong"
+date = "Jan 2026 – Apr 2026"
+tags = ["FPGA", "Vivado", "FFT", "MIPI CSI-2", "Zynq UltraScale+"]
+content = """
+**[Background]**
+
+● Built an <mark>8-channel mmWave radar</mark> high-speed data acquisition system on <mark>Zynq UltraScale+ (XCZU19EG)</mark>, plus an FFT-based environmental noise-cancelling headphone pipeline.
+
+**[Function]**
+
+● Designed a hierarchical <mark>MIPI CSI-2 Rx + AXI VDMA</mark> architecture via Vivado IP Integrator, aggregating 8 high-speed streams into <mark>DDR4</mark>.
+● Hand-wrote a <mark>512-point radix-2 single-path delay-feedback fully pipelined FFT/IFFT</mark> engine with zero-blocking throughput.
+● Built a <mark>frequency-domain spectral subtraction</mark> noise-reduction engine for 16 kHz fixed-point audio with Ping-Pong Buffers, 50% overlap-add, and cascaded async FIFOs for CDC rate matching.
+
+**[Realization]**
+
+● Applied <mark>Gaussian complex multiplication</mark> and <mark>DSP48E2 pre-adder reuse</mark> to cut DSP consumption by <mark>25%</mark>.
+● Resolved 20+ bank voltage and CDC metastability issues with <mark>0 bugs</mark>; improved concurrent throughput by <mark>40%</mark>.
+"""
+
+[[items]]
+title = "FPGA AI Acceleration Assistant Engineer"
+subtitle = "Qianxin Technology · Shenzhen"
+date = "Oct 2025 – Jan 2026"
+tags = ["AI Accelerator", "GEMM", "TensorCore", "SystemVerilog", "PCIe/XDMA"]
+content = """
+**[Background]**
+
+● Implemented a <mark>TensorCore (t_core)</mark> for non-standard mixed-format data conversion and high-precision MAC operations, with co-simulation verification and FPGA deployment on Yanman boards.
+
+![TensorCore architecture diagram](/images/tensorcore-architecture.png)
+
+**[Function]**
+
+● Developed the <mark>fp4/fp16-to-fp9</mark> RTL data conversion module (~800–1,200 lines Verilog), eliminating subnormal underflow and offset-induced precision loss.
+● Built a SystemVerilog testbench with reusable <mark>AXI Valid/Ready</mark> handshake components; maintained ~30 boundary verification cases for 100% bus integrity.
+● Optimized <mark>PCIe/XDMA</mark> drivers and the <mark>POCL</mark> runtime for <mark>GEMM</mark> and <mark>KMeans</mark> deployment.
+
+**[Realization]**
+
+● Fixed 15 timing/precision architecture issues; achieved <mark>100% tensor pipeline test coverage</mark> with 0 bugs.
+● Encapsulated the data conversion and handshake module for direct reuse across <mark>6+ AI operator accelerators</mark> (fully connected, convolution, K-means, etc.) without code modification.
+"""
