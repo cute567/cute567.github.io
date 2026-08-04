@@ -6,37 +6,46 @@ description = "Selected FPGA, AI-hardware, and signal-processing projects."
 title = "Runtime Dual-Mode FPGA Architecture for Compressed-Domain Spike Sorting (PCD-PSS)"
 subtitle = "Master's Thesis · The University of Hong Kong"
 date = "Oct 2025 – July 2026"
-tags = ["Fixed-Point", "Spike Sorting"]
+tags = ["Fixed-Point", "Spike Sorting", "FPGA", "SystemVerilog"]
 content = """
-**Background:** An algorithm-to-FPGA system that classifies aligned neural waveforms directly in the compressed domain, without waveform reconstruction.
-**Function:**
-- Designed two runtime-selectable work modes: M1 reduces sensing cost through confidence-gated progressive measurement, while M5 improves accuracy through pair-specific sensing and correction.
-- Froze the algorithm into an int8/int16/int32 numerical contract and implemented the complete sparse-projection, scoring, decision, and AXI4-Lite control path in RTL.
-- Completed synthesis, timing closure, bitstream generation, ACZ7015 deployment, and layered verification against a bit-exact integer reference.
+**[Background]**
 
-**Realization:** 
-- M1 achieved 0.9571 macro-F1 with 8.6711 average measurements; 
-- M5 achieved 0.9792 macro-F1 with 16 measurements. 
-- The 100 MHz dual-mode core used 6,694 LUTs, 9,747 flip-flops, and one DSP, and passed board-level prediction, score, timeout, and runtime mode-switch checks.
+● An algorithm-to-FPGA system that classifies aligned neural waveforms directly in the compressed domain, without waveform reconstruction.
+
+**[Function]**
+
+● Designed two runtime-selectable work modes: M1 reduces sensing cost through confidence-gated progressive measurement, while M5 improves accuracy through pair-specific sensing and correction.
+● Froze the algorithm into an int8/int16/int32 numerical contract and implemented the complete sparse-projection, scoring, decision, and AXI4-Lite control path in RTL.
+● Completed synthesis, timing closure, bitstream generation, ACZ7015 deployment, and layered verification against a bit-exact integer reference.
+
+**[Realization]**
+
+● M1 achieved 0.9571 macro-F1 with 8.6711 average measurements.
+● M5 achieved 0.9792 macro-F1 with 16 measurements.
+● The 100 MHz dual-mode core used 6,694 LUTs, 9,747 flip-flops, and one DSP.
+● Passed board-level prediction, score, timeout, and runtime mode-switch checks.
 """
 
 [[items]]
 title = "FPGA Prototype of a ReRAM-Based Spiking Neural Network"
 subtitle = "Independent FPGA Project"
 date = "Jun 2026 – Jul 2026"
-tags = ["ReRAM Stub", "SNN"]
+tags = ["ReRAM Stub", "SNN", "Verilog", "Zynq"]
 content = """
-**Background:** Built a complete algorithm-to-board FPGA prototype on the XC7Z015 for AER event and spike-based processing, with a dual-path architecture.
-**Function:**
+**[Background]**
 
-- Built a complete algorithm-to-board FPGA prototype on XC7Z015, including a dual-path CS-LIF + digital ReRAM readout architecture with WL/BL/ADC timing and device non-idealities.
-- Designed the CS-LIF RTL pipeline, signed IF MAC, AXI4-Lite register map, Zynq shell, and PYNQ/MMIO driver; automated the full Vivado → bitstream → JTAG → board regression flow.
+● Built a complete algorithm-to-board FPGA prototype on XC7Z015 for AER event and spike-based processing, with a dual-path CS-LIF + digital ReRAM readout architecture.
 
-**Realization:** 
-- Completed a five-phase verification flow at 100 MHz: 
-- Phase 1 matched 5/5 directed vectors within ±1 LSB and 64/64 MNIST-derived events within ±4 LSB; 
-- Phase 2 achieved 24/24 board/software agreement; Phase 4 kept 16/16 clean/noisy predictions consistent with 0.0 pp degradation; 
-- final regression achieved bit-exact dual-path equivalence and 67.5% board accuracy in the 32-CS/ETL configuration.
+**[Function]**
 
+● Implemented CS-LIF RTL pipeline, signed IF MAC, AXI4-Lite register map, Zynq shell, and PYNQ/MMIO driver with WL/BL/ADC timing and device non-ideality modeling.
+● Automated the full Vivado → bitstream → JTAG → board regression flow.
+
+**[Realization]**
+
+● Completed a five-phase verification flow at 100 MHz on XC7Z015.
+● Phase 1: matched 5/5 directed vectors within ±1 LSB and 64/64 MNIST-derived events within ±4 LSB.
+● Phase 2: achieved 24/24 board/software agreement.
+● Phase 4: kept 16/16 clean/noisy predictions consistent with 0.0 pp degradation.
+● Final regression: bit-exact dual-path equivalence and 67.5% board accuracy in the 32-CS/ETL configuration.
 """
-
