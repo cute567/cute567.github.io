@@ -10,19 +10,26 @@ tags = ["Fixed-Point", "Spike Sorting", "FPGA", "SystemVerilog"]
 content = """
 **[Background]**
 
-● An algorithm-to-FPGA system that classifies aligned neural waveforms directly in the compressed domain, without waveform reconstruction.
+● An <mark>algorithm-to-FPGA</mark> system that classifies aligned neural waveforms directly in the <mark>compressed domain</mark>, without waveform reconstruction.
+
+![Three variants: M0 baseline, M1 efficiency mode, and M5 accuracy enhancement](/images/pcd-pss-three-variants.png)
 
 **[Function]**
 
-● Designed two runtime-selectable work modes: M1 reduces sensing cost through confidence-gated progressive measurement, while M5 improves accuracy through pair-specific sensing and correction.
-● Froze the algorithm into an int8/int16/int32 numerical contract and implemented the complete sparse-projection, scoring, decision, and AXI4-Lite control path in RTL.
-● Completed synthesis, timing closure, bitstream generation, ACZ7015 deployment, and layered verification against a bit-exact integer reference.
+● Designed two runtime-selectable work modes: <mark>M1</mark> reduces sensing cost through <mark>confidence-gated progressive measurement</mark>, while <mark>M5</mark> improves accuracy through <mark>pair-specific sensing and correction</mark>.
+
+● Froze the algorithm into an <mark>int8/int16/int32</mark> numerical contract and implemented the complete <mark>sparse-projection, scoring, decision</mark>, and <mark>AXI4-Lite</mark> control path in RTL.
+
+● Completed synthesis, timing closure, bitstream generation, <mark>ACZ7015</mark> deployment, and layered verification against a <mark>bit-exact integer reference</mark>.
 
 **[Realization]**
 
-● M1 achieved 0.9571 macro-F1 with 8.6711 average measurements.
-● M5 achieved 0.9792 macro-F1 with 16 measurements.
-● The 100 MHz dual-mode core used 6,694 LUTs, 9,747 flip-flops, and one DSP.
+● M1 achieved <mark>0.9571 macro-F1</mark> with <mark>8.6711</mark> average measurements.
+
+● M5 achieved <mark>0.9792 macro-F1</mark> with <mark>16</mark> measurements.
+
+● The <mark>100 MHz</mark> dual-mode core used <mark>6,694 LUTs</mark>, <mark>9,747 flip-flops</mark>, and <mark>one DSP</mark>.
+
 ● Passed board-level prediction, score, timeout, and runtime mode-switch checks.
 """
 
@@ -34,18 +41,25 @@ tags = ["ReRAM Stub", "SNN", "Verilog", "Zynq"]
 content = """
 **[Background]**
 
-● Built a complete algorithm-to-board FPGA prototype on XC7Z015 for AER event and spike-based processing, with a dual-path CS-LIF + digital ReRAM readout architecture.
+● Built a complete <mark>algorithm-to-board FPGA prototype</mark> on <mark>XC7Z015</mark> for AER event and spike-based processing, with a dual-path <mark>CS-LIF + digital ReRAM readout</mark> architecture.
+
+![Overall structure of the ReRAM-based spiking neural network system](/images/reram-snn-architecture.png)
 
 **[Function]**
 
-● Implemented CS-LIF RTL pipeline, signed IF MAC, AXI4-Lite register map, Zynq shell, and PYNQ/MMIO driver with WL/BL/ADC timing and device non-ideality modeling.
-● Automated the full Vivado → bitstream → JTAG → board regression flow.
+● Implemented <mark>CS-LIF RTL pipeline</mark>, signed <mark>IF MAC</mark>, <mark>AXI4-Lite</mark> register map, Zynq shell, and PYNQ/MMIO driver with <mark>WL/BL/ADC</mark> timing and device non-ideality modeling.
+
+● Automated the full <mark>Vivado → bitstream → JTAG → board regression</mark> flow.
 
 **[Realization]**
 
-● Completed a five-phase verification flow at 100 MHz on XC7Z015.
-● Phase 1: matched 5/5 directed vectors within ±1 LSB and 64/64 MNIST-derived events within ±4 LSB.
-● Phase 2: achieved 24/24 board/software agreement.
-● Phase 4: kept 16/16 clean/noisy predictions consistent with 0.0 pp degradation.
-● Final regression: bit-exact dual-path equivalence and 67.5% board accuracy in the 32-CS/ETL configuration.
+● Completed a <mark>five-phase verification flow</mark> at <mark>100 MHz</mark> on XC7Z015.
+
+● Phase 1: matched <mark>5/5</mark> directed vectors within ±1 LSB and <mark>64/64</mark> MNIST-derived events within ±4 LSB.
+
+● Phase 2: achieved <mark>24/24</mark> board/software agreement.
+
+● Phase 4: kept <mark>16/16</mark> clean/noisy predictions consistent with <mark>0.0 pp</mark> degradation.
+
+● Final regression: <mark>bit-exact dual-path equivalence</mark> and <mark>67.5%</mark> board accuracy in the <mark>32-CS/ETL</mark> configuration.
 """

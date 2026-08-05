@@ -12,6 +12,8 @@ content = """
 
 ● Optimized the <mark>FP64 division and square-root execution unit</mark> for a custom <mark>RandomX accelerator</mark> chip to reduce pipeline stalls and throughput loss.
 
+![FP64 5-stage division and square-root pipeline](/images/fp64-5-stage-pipeline.png)
+
 **[Function]**
 
 ● Redesigned the FP64 DIV/SQRT datapath using <mark>Goldschmidt division</mark> and <mark>Newton-Raphson reciprocal square root</mark>, unifying both operations into a shared <mark>C0+5 fixed-latency pipeline</mark> with <mark>II=1</mark>.
@@ -41,6 +43,8 @@ content = """
 
 ● Built an <mark>8-channel mmWave radar</mark> high-speed data acquisition system on <mark>Zynq UltraScale+ (XCZU19EG)</mark>, plus an FFT-based environmental noise-cancelling headphone pipeline.
 
+![Overall FPGA diagram for noise-cancelling headphone pipeline](/images/fpga-cellphone-dsp.png)
+
 **[Function]**
 
 ● Designed a hierarchical <mark>MIPI CSI-2 Rx + AXI VDMA</mark> architecture via Vivado IP Integrator, aggregating 8 high-speed streams into <mark>DDR4</mark>.
@@ -68,7 +72,7 @@ content = """
 
 ● Implemented a <mark>TensorCore (t_core)</mark> for non-standard mixed-format data conversion and high-precision MAC operations, with co-simulation verification and FPGA deployment on Yanman boards.
 
-![TensorCore architecture diagram](/images/tensorcore-architecture.png)
+![TensorCore overall architecture](/images/tensorcore-architecture.png)
 
 **[Function]**
 
