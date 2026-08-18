@@ -3,12 +3,12 @@ title = "Xinyi Huang"
 description = "MSc student in Electrical and Computer Engineering at The University of Hong Kong, specializing in FPGA/ASIC design and AI hardware acceleration."
 url = "https://cute567.github.io"
 favicon = "/favicon.svg"
-last_updated = "August 3, 2026"
+last_updated = "August 19, 2026"
 
 [author]
 name = "Xinyi Huang"
 title = "MSc Student"
-institution = "The University of Hong Kong · Department of Electrical and Computer Engineering (ECE)"
+institution = "The University of Hong Kong"
 avatar = "/bio.jpg"
 
 [social]

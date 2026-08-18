@@ -34,6 +34,34 @@ content = """
 """
 
 [[items]]
+title = "Streaming Attention RTL Accelerator for Transformers"
+subtitle = "Independent RTL Project"
+tags = ["Attention", "Systolic Array", "Online Softmax", "FP16", "SystemVerilog"]
+content = """
+**[Background]**
+
+● Designed a streaming attention acceleration IP based on <mark>block-wise streaming</mark> and <mark>online softmax</mark> to reduce attention-score matrix storage and data-movement overhead in Transformer inference, reusing an <mark>8×8 systolic array</mark> for both <mark>QK^T</mark> and <mark>PV</mark> computation.
+
+![Streaming attention accelerator architecture](/images/streaming-attention-architecture.png)
+
+**[Function]**
+
+● Implemented an <mark>8×8 FP16 systolic array</mark> shared across QK^T and PV, with online softmax, causal/padding masks, tile scheduling, and ready/valid handshaking; supports N=32/48/64/128 and d=32/64.
+
+● Built a causal tile-skipping scheduler that detects fully invalid KV tiles before computation and bypasses the corresponding QK^T, softmax, and PV stages; reused row-sum units and FP32 multipliers through time-multiplexing to reduce duplicated arithmetic resources.
+
+● Performed RTL timing optimization for a <mark>1.25 GHz</mark> target via deeply pipelined floating-point multipliers, product FIFOs, high-fanout control splitting, staged MUXes, and shift-subtract/counter substitutes for multiply/divide; established a Python golden model, VCS self-check regression, 15 SVA assertions, and functional coverage.
+
+**[Realization]**
+
+● At N=64, d=32, causal scheduling skipped 28 invalid KV tiles and completed in <mark>5,191 cycles</mark>, a <mark>~31% cycle reduction</mark> versus 7,515 cycles in the non-causal case.
+
+● Passed 11 parameterized, mask, and backpressure E2E scenarios with 0 errors; functional coverage reached <mark>98.21%</mark>.
+
+● On ASAP7 RVT TT, row-sum and floating-point resource sharing reduced online softmax mapped area from ~20,119 μm² to <mark>16,079 μm²</mark> (~20% reduction); attention-specific compute logic added <mark>18.23%</mark> area overhead over a bare 8×8 GEMM baseline.
+"""
+
+[[items]]
 title = "FPGA/ASIC & Circuit Design Engineer"
 subtitle = "Techhill Technology · Hong Kong"
 date = "Jan 2026 – Apr 2026"

@@ -1,67 +1,43 @@
+**Xinyi Huang**
+
++86 17584950037 · [estella_fae_huang@163.com](mailto:estella_fae_huang@163.com) · Portfolio: [cute567.github.io](https://cute567.github.io)
+
 ## Education
 
-**The University of Hong Kong**, MSc in Electrical and Computer Engineering (ECE), *Sep 2025 – Present*
+**The University of Hong Kong**, MSc in Electrical and Computer Engineering, *Sep 2025 – Nov 2026*
 - Key courses: Integrated Circuits, Analog Chip & Memory Design, AI and Edge Processors, Data Compression
 
 **Beijing Jiaotong University**, BEng in Communication Engineering, *Sep 2021 – Jun 2025*
+- GPA: 3.26/4.0 (top 17%); Academic Excellence Third-Class Scholarship
 - Key courses: Digital Circuits, Analog Circuits, Circuit Analysis, Digital Signal Processing, Microcomputer Principles & Interfaces
-
-## Research Output
-
-**Low-SNR Modulation Recognition Method Based on Time-Frequency Analysis and SVM**
-IEEE Conference on EEBDA · First Author · Mar 2022
-- Proposed a modulation recognition method combining time-frequency analysis with an SVM classifier, using time-domain, frequency-domain, and wavelet energy entropy features to identify FSK, FM, and AM signal types.
-- Achieved 95% average recognition rate at 15 dB SNR and 98.6% at 30 dB SNR. The method offers low complexity and outperforms decision-tree approaches, making it suitable for engineering applications.
 
 ## Internship Experience
 
-**Bitmain** — Digital Design & Verification Engineer · Shanghai · *Jun 2026 – Present*
+**Bitmain** · *Jun 2026 – Present*
 
-*[Background]* Optimized the FP64 division and square-root execution unit for a custom RandomX accelerator chip.
+*Background:* Optimized the original iterative FP64 SQRT (13-cycle) and DIV (9-cycle) operators for the RandomX algorithm, refactoring them into a fixed 5-cycle, II=1 shared pipeline, and further pushed timing to 2.6 GHz.
 
-*[Function]* Redesigned the FP64 DIV/SQRT datapath using Goldschmidt division and Newton-Raphson reciprocal square root; unified both into a shared C0+5 fixed-latency pipeline with II=1. Implemented a 57-bit Q2.55 fixed-point datapath, three high-precision LUTs, candidate multiply-back verification, and four IEEE rounding modes.
-
-*[Realization]* Developed 9 RTL modules and automated VCS/DC/STA verification flows. Reduced SQRT latency from 13 to 5 cycles and DIV latency from 9 to 5 cycles; achieved zero setup violations at 2.4 GHz (5 nm, 0.75 V, 85°C) with only 8.1% power increase.
-
-**Techhill Technology** — FPGA/ASIC & Circuit Design Engineer · Hong Kong · *Jan 2026 – Apr 2026*
-
-*[Background]* 8-channel mmWave radar high-speed data acquisition on Zynq UltraScale+ (XCZU19EG) and FFT-based environmental noise-cancelling headphones.
-
-*[Function]* Designed hierarchical MIPI CSI-2 Rx + AXI VDMA architecture; hand-wrote a 512-point radix-2 fully pipelined FFT/IFFT engine; built a frequency-domain spectral subtraction engine with Ping-Pong Buffers and overlap-add framing.
-
-*[Realization]* Reduced DSP consumption by 25%; resolved 20+ bank voltage and CDC issues (0 bugs); improved concurrent throughput by 40%.
-
-**Qianxin Technology (千芯科技)** — FPGA AI Acceleration Assistant Engineer · Shenzhen · *Oct 2025 – Jan 2026*
-
-*[Background]* TensorCore for non-standard mixed-format data conversion and high-precision MAC operations, with co-simulation and FPGA deployment.
-
-*[Function]* Developed fp4/fp16-to-fp9 RTL (~800–1,200 lines Verilog); built SystemVerilog testbench with reusable AXI Valid/Ready components (~30 boundary test cases); optimized PCIe/XDMA and POCL for GEMM and KMeans deployment.
-
-*[Realization]* Fixed 15 timing/precision issues; 100% tensor pipeline test coverage with 0 bugs; module reusable across 6+ AI operator accelerators without modification.
+*Work:*
+- Rebuilt the FP64 DIV/SQRT datapath with Goldschmidt division and Newton-Raphson reciprocal square root using 57-bit Q2.55 fixed-point arithmetic, three high-precision LUTs, and candidate multiply-back verification; unified DIV and SQRT into a C0+5 fixed-latency, II=1 shared pipeline.
+- Designed the C0–C5 five-stage pipeline with at most one 57×57 multiply per stage; used one candidate multiply, five parallel CSA remainder/midpoint paths, and four IEEE rounding modes to guarantee bit-exact FP64 results.
+- Retargeted the division reciprocal LUT for 2.6 GHz and parallelized C5 rounding pre-computation; built directed tests, constrained-random vectors, SVA, and functional coverage.
+- *Results:* Reduced SQRT latency from 13 to 5 cycles and DIV latency from 9 to 5 cycles with II=1; achieved zero setup violations at 2.4 GHz (5 nm, 0.75 V, 85°C) and further reached 2.6 GHz while preserving five-cycle latency, II=1, and bit-exact behavior.
 
 ## Project Experience
 
-**Runtime Dual-Mode FPGA Architecture for Compressed-Domain Spike Sorting (PCD-PSS)**
-Master's Thesis (In Progress) · The University of Hong Kong · *Oct 2025 – Present*
+**Streaming Attention RTL Accelerator for Transformers** · *Oct 2025 – Jan 2026*
 
-*[Background]* Algorithm-to-FPGA spike-sorting system that classifies aligned neural waveforms directly in the compressed domain with runtime M1/M5 mode selection.
+*Background:* Designed a block-wise streaming attention IP with online softmax to cut attention-score storage and data movement in Transformer inference, reusing an 8×8 systolic array for QK^T and PV.
 
-*[Function]* Implemented sparse ternary projection, measurement-domain linear classification, and a runtime-switchable M1/M5 RTL accelerator with AXI4-Lite control on XC7Z015.
-
-*[Realization]* M1: 0.9571 macro-F1 with 8.67 avg measurements; M5: 0.9792 macro-F1 with 16 measurements. Board-validated at 100 MHz with bit-exact integer reference (6,694 LUTs, 9,747 FFs, 1 DSP).
-
-**FPGA Prototype of a ReRAM-Based Spiking Neural Network**
-Independent FPGA Project · *Jun 2026 – Jul 2026*
-
-*[Background]* Zynq-based prototype with event-driven CS-LIF front end, signed IF classification, and digital ReRAM readout stub with non-ideality injection.
-
-*[Function]* Implemented three-stage fixed-point CS-LIF pipeline, signed IF MAC, AXI4-Lite interface, and WL/BL/ADC/DONE readout-control sequence in Verilog.
-
-*[Realization]* Completed XC7Z015 board bring-up with event-level CS-LIF checks, IF/ReRAM-stub numerical equivalence, and full regression (digital ReRAM stub; no physical device).
+*Work:*
+- Implemented a shared 8×8 FP16 systolic array for QK^T and PV with online softmax, causal/padding masks, tile scheduling, and ready/valid handshaking; supports N=32/48/64/128 and d=32/64.
+- Built a causal tile-skipping scheduler to bypass fully invalid KV tiles before QK^T, softmax, and PV; time-multiplexed row-sum units and FP32 multipliers to reduce duplicated arithmetic.
+- Optimized RTL for 1.25 GHz with deeply pipelined FP multipliers, product FIFOs, high-fanout control splitting, staged MUXes, and shift-subtract/counter substitutes; established a Python golden model, VCS regression, 15 SVA checks, and functional coverage.
+- *Results:* At N=64, d=32, skipped 28 invalid KV tiles and finished in 5,191 cycles (~31% fewer than 7,515 non-causal cycles); 11 E2E scenarios passed with 0 errors and 98.21% functional coverage; reduced online softmax mapped area from ~20,119 μm² to 16,079 μm² (~20%) on ASAP7 RVT TT, with 18.23% attention-specific area overhead over bare 8×8 GEMM.
 
 ## Skills
 
-- **Languages:** English — IELTS 6.5
-- **EDA & Simulation Tools:** VCS, Verdi, Design Compiler (DC), Vivado, ModelSim, Cocotb, Multisim
-- **Hardware Description:** Verilog, SystemVerilog
-- **Programming:** Python
+- **HDL:** Verilog, SystemVerilog, Python
+- **ASIC Front-End:** RTL Design, Microarchitecture, Synthesis, Timing Optimization, SVA, Functional Coverage
+- **EDA Tools:** VCS, Verdi, Design Compiler, Vivado, ModelSim, Cocotb
+- **Other:** English — IELTS 6.5

@@ -5,8 +5,7 @@ title = "About"
 research_interests = [
   "FPGA/ASIC Design",
   "AI Hardware Acceleration",
-  "Spiking Neural Networks",
-  "Signal Processing & Modulation Recognition"
+  "Spiking Neural Networks"
 ]
 
 [[sections]]
