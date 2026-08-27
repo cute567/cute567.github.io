@@ -7,6 +7,7 @@ import {
   BasePageConfig,
   PublicationPageConfig,
   TextPageConfig,
+  PdfPageConfig,
   CardPageConfig,
 } from '@/types/page';
 
@@ -37,6 +38,13 @@ function loadDynamicPageData(slug: string, locale?: string): DynamicPageLocaleDa
       type: 'text',
       config: textConfig,
       content,
+    };
+  }
+
+  if (pageConfig.type === 'pdf') {
+    return {
+      type: 'pdf',
+      config: pageConfig as PdfPageConfig,
     };
   }
 

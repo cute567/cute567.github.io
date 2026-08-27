@@ -1,7 +1,12 @@
 export interface BasePageConfig {
-    type: 'about' | 'publication' | 'card' | 'text';
+    type: 'about' | 'publication' | 'card' | 'text' | 'pdf';
     title: string;
     description?: string;
+}
+
+export interface PdfPageConfig extends BasePageConfig {
+    type: 'pdf';
+    source: string;
 }
 
 export interface PublicationPageConfig extends BasePageConfig {

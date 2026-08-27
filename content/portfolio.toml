@@ -34,31 +34,33 @@ content = """
 """
 
 [[items]]
-title = "Streaming Attention RTL Accelerator for Transformers"
-subtitle = "Independent RTL Project"
-tags = ["Attention", "Systolic Array", "Online Softmax", "FP16", "SystemVerilog"]
+title = "Transformer Attention Accelerator SoC Subsystem Design"
+subtitle = "Independent SoC RTL Project"
+tags = ["Attention", "SoC", "AHB-Lite", "AXI4-MM", "CDC", "SystemVerilog"]
 content = """
 **[Background]**
 
-● Designed a streaming attention acceleration IP based on <mark>block-wise streaming</mark> and <mark>online softmax</mark> to reduce attention-score matrix storage and data-movement overhead in Transformer inference, reusing an <mark>8×8 systolic array</mark> for both <mark>QK^T</mark> and <mark>PV</mark> computation.
+● Built a <mark>software-programmable dual-clock Attention SoC accelerator subsystem</mark> for Transformer inference, covering CPU configuration, DMA transfers, clock-domain crossing, result write-back, and interrupt notification.
 
-![Streaming attention accelerator architecture](/images/streaming-attention-architecture.png)
+![Transformer Attention Accelerator SoC subsystem architecture](/images/attention-soc-subsystem.png)
 
 **[Function]**
 
-● Implemented an <mark>8×8 FP16 systolic array</mark> shared across QK^T and PV, with online softmax, causal/padding masks, tile scheduling, and ready/valid handshaking; supports N=32/48/64/128 and d=32/64.
+● Designed a <mark>500 MHz bus / 1.25 GHz compute</mark> dual-clock architecture: <mark>AHB-Lite</mark> for CSR/IRQ control, <mark>128-bit AXI4-MM</mark> read/write DMA for Q/K/V and result transfers, and multiple <mark>Gray-code asynchronous FIFOs</mark> for Bus/Core CDC.
 
-● Built a causal tile-skipping scheduler that detects fully invalid KV tiles before computation and bypasses the corresponding QK^T, softmax, and PV stages; reused row-sum units and FP32 multipliers through time-multiplexing to reduce duplicated arithmetic resources.
+● Integrated an <mark>8×8 FP16 systolic array</mark>, online softmax, and causal tile scheduler; reused the same array for QK^T and PV, supporting N ∈ {32, 48, 64, 128} and d ∈ {32, 64}.
 
-● Performed RTL timing optimization for a <mark>1.25 GHz</mark> target via deeply pipelined floating-point multipliers, product FIFOs, high-fanout control splitting, staged MUXes, and shift-subtract/counter substitutes for multiply/divide; established a Python golden model, VCS self-check regression, 15 SVA assertions, and functional coverage.
+● Built functional and CDC verification with Python, VCS, SVA, functional coverage, and <mark>VC Static CDC</mark>; completed hierarchical synthesis and dual-clock pre-layout STA using Yosys, ASAP7 RVT TT, and OpenSTA.
 
 **[Realization]**
 
-● At N=64, d=32, causal scheduling skipped 28 invalid KV tiles and completed in <mark>5,191 cycles</mark>, a <mark>~31% cycle reduction</mark> versus 7,515 cycles in the non-causal case.
+● Verified the end-to-end Memory → DMA → CDC → Attention → DMA → Memory path for N32D32, N64D32 random, and N64D32 causal cases; compared <mark>5,120 outputs with 0 mismatches</mark> and achieved <mark>98.96% functional coverage</mark>.
 
-● Passed 11 parameterized, mask, and backpressure E2E scenarios with 0 errors; functional coverage reached <mark>98.21%</mark>.
+● Debugged AXI Read DMA data loss under FIFO-full backpressure; fixed the ready/valid handshake and achieved zero errors across N32/N64/Causal E2E tests.
 
-● On ASAP7 RVT TT, row-sum and floating-point resource sharing reduced online softmax mapped area from ~20,119 μm² to <mark>16,079 μm²</mark> (~20% reduction); attention-specific compute logic added <mark>18.23%</mark> area overhead over a bare 8×8 GEMM baseline.
+● Reduced dual-clock SoC CDC Error/Fatal findings from <mark>65 to 0</mark> using VC Static; implemented scheduler-level causal tile skipping, bypassing <mark>28 invalid KV tiles</mark> at N=64, d=32.
+
+● In hierarchical pre-layout STA, key compute blocks and bus glue achieved <mark>WNS/TNS = 0</mark> at 1.25 GHz compute / 500 MHz bus.
 """
 
 [[items]]

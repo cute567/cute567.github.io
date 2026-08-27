@@ -1,3 +1,4 @@
-type = "text"
+type = "pdf"
 title = "CV"
-source = "cv.md"
+description = "Curriculum Vitae — IC Design"
+source = "/Xinyi_Huang_IC_Design_Resume_EN.pdf"
