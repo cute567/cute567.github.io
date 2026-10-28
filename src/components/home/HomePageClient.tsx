@@ -3,6 +3,7 @@
 import Profile from '@/components/home/Profile';
 import About from '@/components/home/About';
 import SelectedPublications from '@/components/home/SelectedPublications';
+import SelectedProjects, { ProjectLink } from '@/components/home/SelectedProjects';
 import News, { NewsItem } from '@/components/home/News';
 import PublicationsList from '@/components/publications/PublicationsList';
 import TextPage from '@/components/pages/TextPage';
@@ -14,7 +15,7 @@ import { useLocaleStore } from '@/lib/stores/localeStore';
 
 interface SectionConfig {
   id: string;
-  type: 'markdown' | 'publications' | 'list';
+  type: 'markdown' | 'publications' | 'list' | 'links';
   title?: string;
   source?: string;
   filter?: string;
@@ -22,6 +23,7 @@ interface SectionConfig {
   content?: string;
   publications?: Publication[];
   items?: NewsItem[];
+  links?: ProjectLink[];
 }
 
 type PageData =
@@ -92,6 +94,14 @@ export default function HomePageClient({ dataByLocale, defaultLocale }: HomePage
                       <News
                         key={section.id}
                         items={section.items || []}
+                        title={section.title}
+                      />
+                    );
+                  case 'links':
+                    return (
+                      <SelectedProjects
+                        key={section.id}
+                        items={section.links || []}
                         title={section.title}
                       />
                     );

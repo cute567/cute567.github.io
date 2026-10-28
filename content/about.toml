@@ -3,8 +3,9 @@ title = "About"
 
 [profile]
 research_interests = [
-  "FPGA/ASIC Design",
-  "AI Hardware Acceleration",
+  "Efficient AI Accelerator Architecture",
+  "Transformer/LLM Workload Mapping and Dataflow Optimization",
+  "FPGA/ASIC Design and Hardware-Software Co-design",
   "Spiking Neural Networks"
 ]
 
@@ -20,6 +21,12 @@ type = "publications"
 title = "Selected Publications"
 filter = "selected"
 limit = 3
+
+[[sections]]
+id = "selected_projects"
+type = "links"
+title = "Selected Projects"
+source = "selected-projects.toml"
 
 [[sections]]
 id = "news"

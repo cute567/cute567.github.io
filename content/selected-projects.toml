@@ -1,0 +1,24 @@
+[[items]]
+title = "FP64 DIV/SQRT Pipeline & Frequency Optimization"
+subtitle = "Bitmain"
+href = "/portfolio/#fp64-pipeline"
+
+[[items]]
+title = "NoC Architecture & Cycle-Accurate Modeling"
+subtitle = "Bitmain"
+href = "/portfolio/#noc-modeling"
+
+[[items]]
+title = "Transformer Attention Accelerator SoC Subsystem Design"
+subtitle = "Independent Project"
+href = "/portfolio/#attention-soc"
+
+[[items]]
+title = "Runtime Dual-Mode FPGA Architecture for Compressed-Domain Spike Sorting (PCD-PSS)"
+subtitle = "Master's Thesis · HKU"
+href = "/projects/#pcd-pss"
+
+[[items]]
+title = "FPGA Prototype of a ReRAM-Based Spiking Neural Network"
+subtitle = "Independent FPGA Project"
+href = "/projects/#reram-snn"

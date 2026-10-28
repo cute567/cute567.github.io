@@ -14,7 +14,7 @@ content = """
 
 ---
 
-**Project 1: FP64 DIV/SQRT Pipeline & Frequency Optimization**
+<h3 id="fp64-pipeline">Project 1: FP64 DIV/SQRT Pipeline & Frequency Optimization</h3>
 
 ![FP64 5-stage division and square-root pipeline](/images/fp64-5-stage-pipeline.png)
 
@@ -32,7 +32,7 @@ content = """
 
 ---
 
-**Project 2: NoC Architecture & Cycle-Accurate Modeling**
+<h3 id="noc-modeling">Project 2: NoC Architecture & Cycle-Accurate Modeling</h3>
 
 ![BM2048 7x4 Core Mesh and 12 Independent x16 DDR Channels](/images/bm2048-noc-mesh-architecture.svg)
 
@@ -48,6 +48,7 @@ content = """
 """
 
 [[items]]
+id = "attention-soc"
 title = "Transformer Attention Accelerator SoC Subsystem Design"
 subtitle = "Independent Project"
 tags = ["Attention SoC", "AHB-Lite / AXI4-MM", "8×8 Systolic Array", "VC Static CDC", "SystemVerilog"]

@@ -3,6 +3,7 @@ title = "Projects"
 description = "Selected FPGA, AI-hardware, and signal-processing projects."
 
 [[items]]
+id = "pcd-pss"
 title = "Runtime Dual-Mode FPGA Architecture for Compressed-Domain Spike Sorting (PCD-PSS)"
 subtitle = "Master's Thesis · The University of Hong Kong"
 date = "Oct 2025 – July 2026"
@@ -34,6 +35,7 @@ content = """
 """
 
 [[items]]
+id = "reram-snn"
 title = "FPGA Prototype of a ReRAM-Based Spiking Neural Network"
 subtitle = "Independent FPGA Project"
 date = "Jun 2026 – Jul 2026"
