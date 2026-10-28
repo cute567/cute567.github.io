@@ -1,7 +1,5 @@
-I am an MSc student in **Electrical and Computer Engineering (ECE)** at [The University of Hong Kong (HKU)](https://www.hku.hk), with research interests spanning **FPGA/ASIC design**, **AI hardware acceleration**, and **neuromorphic computing**.
+I am an MSc student in **Electrical and Electronic Engineering** at [The University of Hong Kong (HKU)](https://www.hku.hk), currently interning at **Bitmain**. I received my BEng in **Communication Engineering** from [Beijing Jiaotong University (BJTU)](https://www.bjtu.edu.cn) in 2025.
 
-Previously, I earned my BEng in Communication Engineering from [Beijing Jiaotong University (BJTU)](https://www.bjtu.edu.cn).
-
-My hands-on experience includes optimizing FP64 FPU datapaths at Bitmain, designing high-speed radar data acquisition systems on Zynq UltraScale+ FPGAs, building custom FFT/IFFT engines, developing RTL for AI accelerator TensorCore data conversion modules, and deploying spiking neural network prototypes on FPGA.
+My research interests include **efficient AI accelerator architecture**, **Transformer workload mapping**, and **dataflow optimization**, with a focus on improving AI workload performance through **hardware-software co-design**.
 
 **Contact:** [estella_fae_huang@163.com](mailto:estella_fae_huang@163.com)
