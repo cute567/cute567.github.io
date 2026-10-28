@@ -46,6 +46,7 @@ const markdownComponents = {
     code: ({ children }: React.ComponentProps<'code'>) => (
         <code className="px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-[0.95em]">{children}</code>
     ),
+    hr: () => <hr className="my-5 border-neutral-200 dark:border-neutral-800" />,
 };
 
 export default function CardPage({ config, embedded = false }: { config: CardPageConfig; embedded?: boolean }) {

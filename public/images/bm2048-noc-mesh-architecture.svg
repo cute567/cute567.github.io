@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">BM2048 7 by 4 Core Mesh and DDR Channel Connections</title>
+  <desc id="desc">Twenty-eight Cores form a seven-row four-column mesh. Six LPDDR4X x32 devices are placed on the left and right. Each device has two independent x16 channels connected to boundary Cores in rows zero through five. Row six has no DDR channel.</desc>
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="4" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#35658f"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="4" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#24752b"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="4" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#6f7d88"/>
+    </marker>
+    <style>
+      .title{font:700 22px "Segoe UI","Microsoft YaHei",Arial,sans-serif;fill:#17365d}
+      .axis{font:600 13px "Segoe UI","Microsoft YaHei",Arial,sans-serif;fill:#52606d}
+      .core{fill:#e8f1fb;stroke:#4f78a8;stroke-width:2}
+      .core-ddr{fill:#fff4cf;stroke:#b8860b;stroke-width:2}
+      .core-text{font:600 13px Consolas,"Courier New",monospace;fill:#263238;text-anchor:middle}
+      .mesh-link{stroke:#35658f;stroke-width:2.4;fill:none;marker-start:url(#arrow-blue);marker-end:url(#arrow-blue)}
+      .unused-link{stroke:#6f7d88;stroke-width:2.4;stroke-dasharray:7 5;fill:none;marker-start:url(#arrow-gray);marker-end:url(#arrow-gray)}
+      .ddr{fill:#eef0f2;stroke:#5f6b75;stroke-width:2}
+      .ddr-title{font:700 15px "Segoe UI","Microsoft YaHei",Arial,sans-serif;fill:#263238;text-anchor:middle}
+      .ddr-sub{font:12px "Segoe UI","Microsoft YaHei",Arial,sans-serif;fill:#455a64;text-anchor:middle}
+      .channel{stroke:#24752b;stroke-width:2.8;fill:none;marker-start:url(#arrow-green);marker-end:url(#arrow-green)}
+      .channel-label{font:600 11px "Segoe UI","Microsoft YaHei",Arial,sans-serif;fill:#1b5e20}
+    </style>
+  </defs>
+  <rect width="1200" height="700" fill="#fff"/>
+  <text x="600" y="35" class="title" text-anchor="middle">BM2048 7x4 Core Mesh and 12 Independent x16 DDR Channels</text>
+
+  <text x="350" y="68" class="axis" text-anchor="middle">col 0</text>
+  <text x="500" y="68" class="axis" text-anchor="middle">col 1</text>
+  <text x="650" y="68" class="axis" text-anchor="middle">col 2</text>
+  <text x="800" y="68" class="axis" text-anchor="middle">col 3</text>
+
+  <!-- Core-to-Core horizontal links: all adjacent pairs are connected. -->
+  <g class="mesh-link">
+    <path d="M408 110 H442"/><path d="M558 110 H592"/><path d="M708 110 H742"/>
+    <path d="M408 200 H442"/><path d="M558 200 H592"/><path d="M708 200 H742"/>
+    <path d="M408 290 H442"/><path d="M558 290 H592"/><path d="M708 290 H742"/>
+    <path d="M408 380 H442"/><path d="M558 380 H592"/><path d="M708 380 H742"/>
+    <path d="M408 470 H442"/><path d="M558 470 H592"/><path d="M708 470 H742"/>
+    <path d="M408 560 H442"/><path d="M558 560 H592"/><path d="M708 560 H742"/>
+  </g>
+  <g class="unused-link">
+    <path d="M408 650 H442"/><path d="M558 650 H592"/><path d="M708 650 H742"/>
+  </g>
+
+  <!-- Core-to-Core vertical links: all adjacent pairs are connected. -->
+  <g class="mesh-link">
+    <path d="M350 143 V167"/><path d="M500 143 V167"/><path d="M650 143 V167"/><path d="M800 143 V167"/>
+    <path d="M350 233 V257"/><path d="M500 233 V257"/><path d="M650 233 V257"/><path d="M800 233 V257"/>
+    <path d="M350 323 V347"/><path d="M500 323 V347"/><path d="M650 323 V347"/><path d="M800 323 V347"/>
+    <path d="M350 413 V437"/><path d="M500 413 V437"/><path d="M650 413 V437"/><path d="M800 413 V437"/>
+    <path d="M350 503 V527"/><path d="M500 503 V527"/><path d="M650 503 V527"/><path d="M800 503 V527"/>
+    <path d="M350 593 V617"/><path d="M500 593 V617"/><path d="M650 593 V617"/><path d="M800 593 V617"/>
+  </g>
+
+  <!-- Core nodes. Boundary Cores connected to DDR channels use the warm fill. -->
+  <g>
+    <rect x="300" y="85" width="100" height="50" rx="5" class="core-ddr"/><text x="350" y="115" class="core-text">Core(0,0)</text>
+    <rect x="450" y="85" width="100" height="50" rx="5" class="core"/><text x="500" y="115" class="core-text">Core(0,1)</text>
+    <rect x="600" y="85" width="100" height="50" rx="5" class="core"/><text x="650" y="115" class="core-text">Core(0,2)</text>
+    <rect x="750" y="85" width="100" height="50" rx="5" class="core-ddr"/><text x="800" y="115" class="core-text">Core(0,3)</text>
+
+    <rect x="300" y="175" width="100" height="50" rx="5" class="core-ddr"/><text x="350" y="205" class="core-text">Core(1,0)</text>
+    <rect x="450" y="175" width="100" height="50" rx="5" class="core"/><text x="500" y="205" class="core-text">Core(1,1)</text>
+    <rect x="600" y="175" width="100" height="50" rx="5" class="core"/><text x="650" y="205" class="core-text">Core(1,2)</text>
+    <rect x="750" y="175" width="100" height="50" rx="5" class="core-ddr"/><text x="800" y="205" class="core-text">Core(1,3)</text>
+
+    <rect x="300" y="265" width="100" height="50" rx="5" class="core-ddr"/><text x="350" y="295" class="core-text">Core(2,0)</text>
+    <rect x="450" y="265" width="100" height="50" rx="5" class="core"/><text x="500" y="295" class="core-text">Core(2,1)</text>
+    <rect x="600" y="265" width="100" height="50" rx="5" class="core"/><text x="650" y="295" class="core-text">Core(2,2)</text>
+    <rect x="750" y="265" width="100" height="50" rx="5" class="core-ddr"/><text x="800" y="295" class="core-text">Core(2,3)</text>
+
+    <rect x="300" y="355" width="100" height="50" rx="5" class="core-ddr"/><text x="350" y="385" class="core-text">Core(3,0)</text>
+    <rect x="450" y="355" width="100" height="50" rx="5" class="core"/><text x="500" y="385" class="core-text">Core(3,1)</text>
+    <rect x="600" y="355" width="100" height="50" rx="5" class="core"/><text x="650" y="385" class="core-text">Core(3,2)</text>
+    <rect x="750" y="355" width="100" height="50" rx="5" class="core-ddr"/><text x="800" y="385" class="core-text">Core(3,3)</text>
+
+    <rect x="300" y="445" width="100" height="50" rx="5" class="core-ddr"/><text x="350" y="475" class="core-text">Core(4,0)</text>
+    <rect x="450" y="445" width="100" height="50" rx="5" class="core"/><text x="500" y="475" class="core-text">Core(4,1)</text>
+    <rect x="600" y="445" width="100" height="50" rx="5" class="core"/><text x="650" y="475" class="core-text">Core(4,2)</text>
+    <rect x="750" y="445" width="100" height="50" rx="5" class="core-ddr"/><text x="800" y="475" class="core-text">Core(4,3)</text>
+
+    <rect x="300" y="535" width="100" height="50" rx="5" class="core-ddr"/><text x="350" y="565" class="core-text">Core(5,0)</text>
+    <rect x="450" y="535" width="100" height="50" rx="5" class="core"/><text x="500" y="565" class="core-text">Core(5,1)</text>
+    <rect x="600" y="535" width="100" height="50" rx="5" class="core"/><text x="650" y="565" class="core-text">Core(5,2)</text>
+    <rect x="750" y="535" width="100" height="50" rx="5" class="core-ddr"/><text x="800" y="565" class="core-text">Core(5,3)</text>
+
+    <rect x="300" y="625" width="100" height="50" rx="5" class="core"/><text x="350" y="655" class="core-text">Core(6,0)</text>
+    <rect x="450" y="625" width="100" height="50" rx="5" class="core"/><text x="500" y="655" class="core-text">Core(6,1)</text>
+    <rect x="600" y="625" width="100" height="50" rx="5" class="core"/><text x="650" y="655" class="core-text">Core(6,2)</text>
+    <rect x="750" y="625" width="100" height="50" rx="5" class="core"/><text x="800" y="655" class="core-text">Core(6,3)</text>
+  </g>
+
+  <!-- Left-side LPDDR4X devices and x16 channels. -->
+  <g>
+    <rect x="25" y="72" width="215" height="166" rx="7" class="ddr"/>
+    <text x="132" y="97" class="ddr-title">DDR0 - LPDDR4X x32</text>
+    <line x1="25" y1="148" x2="240" y2="148" stroke="#aab2b8"/>
+    <text x="132" y="124" class="ddr-sub">Channel 0 - x16</text>
+    <text x="132" y="214" class="ddr-sub">Channel 1 - x16</text>
+    <path d="M248 110 H292" class="channel"/><path d="M248 200 H292" class="channel"/>
+
+    <rect x="25" y="252" width="215" height="166" rx="7" class="ddr"/>
+    <text x="132" y="277" class="ddr-title">DDR1 - LPDDR4X x32</text>
+    <line x1="25" y1="328" x2="240" y2="328" stroke="#aab2b8"/>
+    <text x="132" y="304" class="ddr-sub">Channel 0 - x16</text>
+    <text x="132" y="394" class="ddr-sub">Channel 1 - x16</text>
+    <path d="M248 290 H292" class="channel"/><path d="M248 380 H292" class="channel"/>
+
+    <rect x="25" y="432" width="215" height="166" rx="7" class="ddr"/>
+    <text x="132" y="457" class="ddr-title">DDR2 - LPDDR4X x32</text>
+    <line x1="25" y1="508" x2="240" y2="508" stroke="#aab2b8"/>
+    <text x="132" y="484" class="ddr-sub">Channel 0 - x16</text>
+    <text x="132" y="574" class="ddr-sub">Channel 1 - x16</text>
+    <path d="M248 470 H292" class="channel"/><path d="M248 560 H292" class="channel"/>
+  </g>
+
+  <!-- Right-side LPDDR4X devices and x16 channels. -->
+  <g>
+    <rect x="960" y="72" width="215" height="166" rx="7" class="ddr"/>
+    <text x="1067" y="97" class="ddr-title">DDR3 - LPDDR4X x32</text>
+    <line x1="960" y1="148" x2="1175" y2="148" stroke="#aab2b8"/>
+    <text x="1067" y="124" class="ddr-sub">Channel 0 - x16</text>
+    <text x="1067" y="214" class="ddr-sub">Channel 1 - x16</text>
+    <path d="M858 110 H952" class="channel"/><path d="M858 200 H952" class="channel"/>
+
+    <rect x="960" y="252" width="215" height="166" rx="7" class="ddr"/>
+    <text x="1067" y="277" class="ddr-title">DDR4 - LPDDR4X x32</text>
+    <line x1="960" y1="328" x2="1175" y2="328" stroke="#aab2b8"/>
+    <text x="1067" y="304" class="ddr-sub">Channel 0 - x16</text>
+    <text x="1067" y="394" class="ddr-sub">Channel 1 - x16</text>
+    <path d="M858 290 H952" class="channel"/><path d="M858 380 H952" class="channel"/>
+
+    <rect x="960" y="432" width="215" height="166" rx="7" class="ddr"/>
+    <text x="1067" y="457" class="ddr-title">DDR5 - LPDDR4X x32</text>
+    <line x1="960" y1="508" x2="1175" y2="508" stroke="#aab2b8"/>
+    <text x="1067" y="484" class="ddr-sub">Channel 0 - x16</text>
+    <text x="1067" y="574" class="ddr-sub">Channel 1 - x16</text>
+    <path d="M858 470 H952" class="channel"/><path d="M858 560 H952" class="channel"/>
+  </g>
+
+</svg>

@@ -12,23 +12,39 @@ content = """
 
 ● Contributing to optimized <mark>FP64 arithmetic</mark> and on-chip <mark>NoC/DDR data-path architecture</mark> for a <mark>RandomX</mark> virtual-machine workload.
 
+---
+
+**Project 1: FP64 DIV/SQRT Pipeline & Frequency Optimization**
+
 ![FP64 5-stage division and square-root pipeline](/images/fp64-5-stage-pipeline.png)
 
 **[Function]**
 
-● **FP64 DIV/SQRT Pipeline & Frequency Optimization:** Designed a unified <mark>5-cycle, fixed-latency shared pipeline</mark> for FP64 DIV and SQRT using <mark>Goldschmidt division</mark>, reciprocal-square-root <mark>Newton iteration</mark>, <mark>57-bit Q2.55 fixed-point</mark> arithmetic, and LUT-based initial approximations, supporting <mark>one new instruction per cycle (II=1)</mark>.
+● Designed a unified <mark>5-cycle, fixed-latency shared pipeline</mark> for FP64 DIV and SQRT using <mark>Goldschmidt division</mark>, reciprocal-square-root <mark>Newton iteration</mark>, <mark>57-bit Q2.55 fixed-point</mark> arithmetic, and LUT-based initial approximations; supports <mark>one new instruction per cycle</mark>.
 
-● Removed redundant clock-gating and operand-isolation logic based on <mark>Design Compiler</mark> power reports to reduce power consumption, and formally verified key functional and timing properties over bounded numeric ranges using <mark>VC Formal</mark>.
+● Removed redundant clock-gating and operand-isolation logic based on <mark>DC power reports</mark> to reduce power consumption.
 
-● **NoC Architecture & Cycle-Accurate Modeling:** Evaluated candidate topologies and DDR placements; defined a <mark>2D-mesh NoC</mark> with deterministic request/response routing while reusing proven architectural components to reduce verification risk.
+● Formally verified key functional and timing properties over bounded numeric ranges using <mark>VC Formal</mark>.
+
+**[Realization]**
+
+● Achieved timing closure at <mark>2.4 GHz and 2.6 GHz</mark> under <mark>5 nm, 0.75 V, 85°C</mark> conditions, with <mark>no setup violations</mark>; results are <mark>bit-accurate</mark> against the reference model and power increased only <mark>20%</mark> versus the prior iterative operator.
+
+---
+
+**Project 2: NoC Architecture & Cycle-Accurate Modeling**
+
+![BM2048 7x4 Core Mesh and 12 Independent x16 DDR Channels](/images/bm2048-noc-mesh-architecture.svg)
+
+**[Function]**
+
+● Evaluated candidate topologies and DDR placements; defined a <mark>2D-mesh NoC</mark> with <mark>deterministic request/response routing</mark> while reusing proven architectural components to reduce verification risk.
 
 ● Defined <mark>segmented responses</mark>, bounded outstanding transactions, <mark>FIFO back-pressure</mark>, and response-reassembly mechanisms to improve response-path bandwidth utilization.
 
 **[Realization]**
 
-● Achieved timing closure at <mark>2.4 GHz and 2.6 GHz</mark> under <mark>5 nm, 0.75 V, 85°C</mark> conditions with <mark>zero setup violations</mark>; results are bit-accurate against the reference model and power increased only 20% versus the prior iterative operator.
-
-● Built a parameterized <mark>cycle-accurate NoC performance model</mark> covering link pipeline depth, FIFO depth, DDR service latency, and uniform/hotspot/burst traffic to quantify end-to-end latency, hot links, and buffer pressure.
+● Built a parameterized <mark>cycle-accurate model</mark> covering link pipeline depth, FIFO depth, DDR service latency, and <mark>uniform/hotspot/burst traffic</mark> to quantify end-to-end latency, hot links, and buffer pressure.
 """
 
 [[items]]
@@ -42,7 +58,7 @@ content = """
 
 ![Transformer Attention Accelerator SoC System Architecture](/images/attention-soc-system-architecture.png)
 
-![Attention Core Microarchitecture](/images/attention-core-microarchitecture.png)
+![Attention Core Microarchitecture](/images/attention-core-microarchitecture-en.png)
 
 **[Function]**
 
@@ -90,33 +106,4 @@ content = """
 ● Resolved 20+ bank voltage and CDC metastability issues with <mark>0 bugs</mark>.
 
 ● Improved concurrent throughput by <mark>40%</mark>.
-"""
-
-[[items]]
-title = "FPGA AI Acceleration Assistant Engineer"
-subtitle = "Qianxin Technology · Shenzhen"
-date = "Oct 2025 – Jan 2026"
-tags = ["AI Accelerator", "GEMM", "TensorCore", "SystemVerilog", "PCIe/XDMA"]
-content = """
-**[Background]**
-
-● Implemented a <mark>TensorCore (t_core)</mark> for non-standard mixed-format data conversion and high-precision MAC operations, with co-simulation verification and FPGA deployment on Yanman boards.
-
-![TensorCore overall architecture](/images/tensorcore-architecture.png)
-
-**[Function]**
-
-● Developed the <mark>fp4/fp16-to-fp9</mark> RTL data conversion module (~800–1,200 lines Verilog), eliminating subnormal underflow and offset-induced precision loss.
-
-● Built a SystemVerilog testbench with reusable <mark>AXI Valid/Ready</mark> handshake components; maintained ~30 boundary verification cases for 100% bus integrity.
-
-● Optimized <mark>PCIe/XDMA</mark> drivers and the <mark>POCL</mark> runtime for <mark>GEMM</mark> and <mark>KMeans</mark> deployment.
-
-**[Realization]**
-
-● Fixed 15 timing/precision architecture issues in the tensor multiplication pipeline.
-
-● Achieved <mark>100% tensor pipeline test coverage</mark> with 0 bugs.
-
-● Encapsulated the data conversion and handshake module for direct reuse across <mark>6+ AI operator accelerators</mark> (fully connected, convolution, K-means, etc.) without code modification.
 """
