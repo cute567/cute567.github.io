@@ -6,61 +6,61 @@ description = "Internship and industry experience in FPGA/ASIC design, AI hardwa
 title = "Digital Design & Verification Engineer"
 subtitle = "Bitmain · Shanghai"
 date = "Jun 2026 – Present"
-tags = ["FP64 FPU", "Goldschmidt", "Newton-Raphson", "VCS/Verdi", "Design Compiler"]
+tags = ["FP64 FPU", "2D-Mesh NoC", "Goldschmidt / Newton-Raphson", "VC Formal", "Design Compiler"]
 content = """
 **[Background]**
 
-● Optimized the <mark>FP64 division and square-root execution unit</mark> for a custom <mark>RandomX accelerator</mark> chip to reduce pipeline stalls and throughput loss.
+● Contributing to optimized <mark>FP64 arithmetic</mark> and on-chip <mark>NoC/DDR data-path architecture</mark> for a <mark>RandomX</mark> virtual-machine workload.
 
 ![FP64 5-stage division and square-root pipeline](/images/fp64-5-stage-pipeline.png)
 
 **[Function]**
 
-● Redesigned the FP64 DIV/SQRT datapath using <mark>Goldschmidt division</mark> and <mark>Newton-Raphson reciprocal square root</mark>, unifying both operations into a shared <mark>C0+5 fixed-latency pipeline</mark> with <mark>II=1</mark>.
+● **FP64 DIV/SQRT Pipeline & Frequency Optimization:** Designed a unified <mark>5-cycle, fixed-latency shared pipeline</mark> for FP64 DIV and SQRT using <mark>Goldschmidt division</mark>, reciprocal-square-root <mark>Newton iteration</mark>, <mark>57-bit Q2.55 fixed-point</mark> arithmetic, and LUT-based initial approximations, supporting <mark>one new instruction per cycle (II=1)</mark>.
 
-● Implemented a <mark>57-bit Q2.55 fixed-point datapath</mark>, three high-precision LUTs, candidate multiply-back verification, and four IEEE rounding modes for bit-exact FP64 results.
+● Removed redundant clock-gating and operand-isolation logic based on <mark>Design Compiler</mark> power reports to reduce power consumption, and formally verified key functional and timing properties over bounded numeric ranges using <mark>VC Formal</mark>.
 
-● Built automated flows for LUT generation, candidate-window scanning, <mark>VCS regression</mark>, <mark>Design Compiler synthesis</mark>, and SDC/STA analysis.
+● **NoC Architecture & Cycle-Accurate Modeling:** Evaluated candidate topologies and DDR placements; defined a <mark>2D-mesh NoC</mark> with deterministic request/response routing while reusing proven architectural components to reduce verification risk.
+
+● Defined <mark>segmented responses</mark>, bounded outstanding transactions, <mark>FIFO back-pressure</mark>, and response-reassembly mechanisms to improve response-path bandwidth utilization.
 
 **[Realization]**
 
-● Developed 9 RTL modules including the core, interface wrapper, multipliers, CSA, and LUT blocks.
+● Achieved timing closure at <mark>2.4 GHz and 2.6 GHz</mark> under <mark>5 nm, 0.75 V, 85°C</mark> conditions with <mark>zero setup violations</mark>; results are bit-accurate against the reference model and power increased only 20% versus the prior iterative operator.
 
-● Verified the design with 28 directed tests and 10,052 bit-exact test vectors.
-
-● Reduced <mark>SQRT latency from 13 to 5 cycles</mark> and <mark>DIV latency from 9 to 5 cycles</mark>.
-
-● Achieved zero setup violations at <mark>2.4 GHz</mark> under a 5 nm, 0.75 V, 85°C corner with only 8.1% power increase.
+● Built a parameterized <mark>cycle-accurate NoC performance model</mark> covering link pipeline depth, FIFO depth, DDR service latency, and uniform/hotspot/burst traffic to quantify end-to-end latency, hot links, and buffer pressure.
 """
 
 [[items]]
 title = "Transformer Attention Accelerator SoC Subsystem Design"
-subtitle = "Independent SoC RTL Project"
-tags = ["Attention", "SoC", "AHB-Lite", "AXI4-MM", "CDC", "SystemVerilog"]
+subtitle = "Independent Project"
+tags = ["Attention SoC", "AHB-Lite / AXI4-MM", "8×8 Systolic Array", "VC Static CDC", "SystemVerilog"]
 content = """
 **[Background]**
 
 ● Built a <mark>software-programmable dual-clock Attention SoC accelerator subsystem</mark> for Transformer inference, covering CPU configuration, DMA transfers, clock-domain crossing, result write-back, and interrupt notification.
 
-![Transformer Attention Accelerator SoC subsystem architecture](/images/attention-soc-subsystem.png)
+![Transformer Attention Accelerator SoC System Architecture](/images/attention-soc-system-architecture.png)
+
+![Attention Core Microarchitecture](/images/attention-core-microarchitecture.png)
 
 **[Function]**
 
-● Designed a <mark>500 MHz bus / 1.25 GHz compute</mark> dual-clock architecture: <mark>AHB-Lite</mark> for CSR/IRQ control, <mark>128-bit AXI4-MM</mark> read/write DMA for Q/K/V and result transfers, and multiple <mark>Gray-code asynchronous FIFOs</mark> for Bus/Core CDC.
+● Integrated a <mark>500 MHz bus domain</mark> with a <mark>1.25 GHz compute domain</mark>: <mark>AHB-Lite</mark> for register configuration and interrupts, <mark>128-bit AXI4-MM DMA</mark> for Q/K/V and result transfers, and <mark>asynchronous FIFOs</mark> for clock-domain crossing.
 
-● Integrated an <mark>8×8 FP16 systolic array</mark>, online softmax, and causal tile scheduler; reused the same array for QK^T and PV, supporting N ∈ {32, 48, 64, 128} and d ∈ {32, 64}.
+● Reused an <mark>8×8 FP16 systolic array</mark> for QK^T and PV; added <mark>8-way parallel Softmax</mark> plus score/probability queues so matrix compute, Softmax, and accumulation advance concurrently.
 
-● Built functional and CDC verification with Python, VCS, SVA, functional coverage, and <mark>VC Static CDC</mark>; completed hierarchical synthesis and dual-clock pre-layout STA using Yosys, ASAP7 RVT TT, and OpenSTA.
+● Reduced dual-clock CDC Error/Fatal findings from <mark>65 to 0</mark> using <mark>VC Static</mark>.
+
+● Established Python reference-model, <mark>VCS regression</mark>, <mark>SVA</mark>, and functional-coverage verification flows.
 
 **[Realization]**
 
-● Verified the end-to-end Memory → DMA → CDC → Attention → DMA → Memory path for N32D32, N64D32 random, and N64D32 causal cases; compared <mark>5,120 outputs with 0 mismatches</mark> and achieved <mark>98.96% functional coverage</mark>.
+● Reduced compute cycles from 342,228 to <mark>79,489 (-76.8%)</mark> and end-to-end task cycles from 350,429 to <mark>105,112 (-70.0%)</mark> for N=64, d=32 attention.
 
-● Debugged AXI Read DMA data loss under FIFO-full backpressure; fixed the ready/valid handshake and achieved zero errors across N32/N64/Causal E2E tests.
+● Achieved <mark>98.48% functional coverage</mark>, <mark>0 SVA failures</mark>, and <mark>0 numerical mismatches</mark> across four final regressions.
 
-● Reduced dual-clock SoC CDC Error/Fatal findings from <mark>65 to 0</mark> using VC Static; implemented scheduler-level causal tile skipping, bypassing <mark>28 invalid KV tiles</mark> at N=64, d=32.
-
-● In hierarchical pre-layout STA, key compute blocks and bus glue achieved <mark>WNS/TNS = 0</mark> at 1.25 GHz compute / 500 MHz bus.
+● Completed pre-layout STA for four critical modules using Yosys, ASAP7 RVT TT libraries, and OpenSTA, achieving <mark>WNS/TNS = 0 at 1.25 GHz</mark> with 50 ps clock uncertainty.
 """
 
 [[items]]
